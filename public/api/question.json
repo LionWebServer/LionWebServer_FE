@@ -1,0 +1,22 @@
+{ "questionList" : [
+    {
+      "title": "질문 title 1",
+      "createdAt": "mock data",
+      "userName": "김민정"
+    },
+    {
+      "title": "질문 title 2",
+      "createdAt": "🏝🏝🏝🏝",
+      "userName": "김도훈"
+    },
+    {
+      "title": "질문 title 2",
+      "createdAt": "👀 ㅎㅇㅎㅇㅎㅇ",
+      "userName": "이하람"
+    }
+  ],
+  "totalPage" : 0,
+  "totalElements" : 0,
+  "currentPage" : 0,
+  "size" : 0
+}
