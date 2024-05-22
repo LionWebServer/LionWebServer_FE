@@ -1,0 +1,9 @@
+.global-layout{
+    display: flex;
+    justify-content: center;
+    & > div{
+        width: 100%;
+        max-width: 1200px;
+    }
+    /*max-width: 1000px;*/
+}
