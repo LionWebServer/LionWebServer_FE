@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import { DataGrid } from '@mui/x-data-grid';
+import {formatDate} from "../../utils/date";
 
 
 const rows= [
@@ -9,9 +10,9 @@ const rows= [
 ];
 
 const columns = [
-  { field: 'col1', headerName: '번호', width: 150 },
-  { field: 'col2', headerName: '제목', width: 150 },
-  { field: 'col3', headerName: '작성일자', width: 150 },
+  { field: 'col1', headerName: '번호', width: 100},
+  { field: 'col2', headerName: '제목', width: 700 },
+  { field: 'col3', headerName: '작성일자',type: 'dateTime', width: 250, valueGetter: (value) => value && new Date(value)},
 ];
 
 export default function Question() {
