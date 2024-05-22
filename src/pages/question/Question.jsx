@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import { DataGrid } from '@mui/x-data-grid';
-import {formatDate} from "../../utils/date";
+import {useNavigate} from "react-router-dom";
 
 
 const rows= [
@@ -12,7 +12,7 @@ const rows= [
 const columns = [
   { field: 'col1', headerName: '번호', width: 100},
   { field: 'col2', headerName: '제목', width: 700 },
-  { field: 'col3', headerName: '작성일자',type: 'dateTime', width: 250, valueGetter: (value) => value && new Date(value)},
+  { field: 'col3', headerName: '작성일자', type: 'dateTime', width: 250, valueGetter: (value) => value && new Date(value)},
 ];
 
 export default function Question() {
@@ -20,7 +20,6 @@ export default function Question() {
   const [data, setData] = useState();
 
   useEffect(() => {
-
     fetch("http://localhost:3000/api/question.json", {
       method: "GET",
     })
@@ -28,7 +27,7 @@ export default function Question() {
       .then((response) => {
         const transformedQuestionList = response.questionList.map((item, index) => {
           return {
-            id: index,
+            id: item.questionId,
             col1: (index + 1).toString(),
             col2: item.title,
             col3: item.createdAt,
@@ -41,10 +40,16 @@ export default function Question() {
         setData(transformedData);
       })
   }, []);
+  const navigate = useNavigate();
+
+  const handleRowClick = (row) => {
+    navigate(`/question/detail/${row.id}`)
+    console.log(row);
+  };
 
   return (
     <div style={{ height: '100%', width: 1500 }}>
-      <DataGrid rows={data?.questionList || rows} columns={columns} pagination={true} />
+      <DataGrid rows={data?.questionList || rows} columns={columns} pagination={true} onRowClick={handleRowClick} getRowId={(row) => row.id}/>
     </div>
   );
 }
