@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { DataGrid } from '@mui/x-data-grid';
 import {useNavigate} from "react-router-dom";
+import {useGetQuestion} from "../../hooks/useGetQuestion";
 
 
 const rows= [
@@ -16,29 +17,9 @@ const columns = [
 ];
 
 export default function Question() {
-
-  const [data, setData] = useState();
-
+  const {GetQuestion, data} = useGetQuestion();
   useEffect(() => {
-    fetch("http://localhost:3000/api/question.json", {
-      method: "GET",
-    })
-      .then((res) => res.json())
-      .then((response) => {
-        const transformedQuestionList = response.questionList.map((item, index) => {
-          return {
-            id: item.questionId,
-            col1: (index + 1).toString(),
-            col2: item.title,
-            col3: item.createdAt,
-          };
-        })
-        const transformedData = {
-          ...response,
-          questionList: transformedQuestionList,
-        }
-        setData(transformedData);
-      })
+    GetQuestion()
   }, []);
   const navigate = useNavigate();
 
