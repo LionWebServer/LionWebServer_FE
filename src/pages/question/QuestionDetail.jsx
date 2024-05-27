@@ -3,20 +3,27 @@ import styles from "./QuestionDetail.module.scss";
 import {Box, Button, Container, TextField, Typography} from "@mui/material";
 import {useGetQuestionDeatil} from "../../hooks/useGetQuestionDetail";
 import {useGetAnswer} from "../../hooks/useGetAnswer";
+import {usePostAnswer} from "../../hooks/usePostAnswer";
 
 export default function QuestionDetail() {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    const submitData = Object.fromEntries(formData);
-  };
 
+  const { PostAnswer } = usePostAnswer();
   const { GetQuestionDeatil, data } = useGetQuestionDeatil();
   const { GetAnswer, answerList } = useGetAnswer();
+
   useEffect(() => {
     GetQuestionDeatil()
     GetAnswer()
   }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const submitData = Object.fromEntries(formData);
+    PostAnswer(submitData);
+  };
+
+
 
   console.log(answerList);
   return (

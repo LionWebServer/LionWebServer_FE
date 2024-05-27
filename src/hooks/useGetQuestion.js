@@ -3,6 +3,8 @@ import {useState} from "react";
 
 export const useGetQuestion = () =>{
 
+
+
   const [data, setData] = useState();
   const GetQuestion = async () => {
     fetch("http://localhost:3000/api/question.json", {
