@@ -24,7 +24,6 @@ export default function QuestionDetail() {
   };
 
 
-
   console.log(answerList);
   return (
     <Container component="div" maxWidth="xs">
