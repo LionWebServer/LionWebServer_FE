@@ -1,0 +1,21 @@
+{ "answerList" : [
+  {
+    "answerId": 1,
+    "content": "답변 내용 1",
+    "createdAt": "2024-05-22T14:04:02",
+    "userName": "김민정"
+  },
+  {
+    "answerId": 2,
+    "content": "답변 내용 2",
+    "createdAt": "2024-05-22T14:04:02",
+    "userName": "김도훈"
+  },
+  {
+    "answerId": 3,
+    "content": "답변 내용 3",
+    "createdAt": "2024-05-22T14:04:02",
+    "userName": "이하람"
+  }
+]
+}

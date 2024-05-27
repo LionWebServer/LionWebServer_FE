@@ -1,8 +1,8 @@
-{ "questionId" : '0',
-  "title" : '질문 title 1',
-  "content" : '질문 content ',
-  "createdAt" : '2024-05-22T14:04:02',
-  "userName" : '김민정'
+{ "questionId" : "0",
+  "title" : "질문 title 1",
+  "content" : "질문 content",
+  "createdAt" : "2024-05-22T14:04:02",
+  "userName" : "김민정"
 }
 
 

@@ -1,38 +1,58 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styles from "./QuestionDetail.module.scss";
-import {Button} from "@mui/material";
+import {Box, Button, Container, TextField, Typography} from "@mui/material";
+import {useGetQuestionDeatil} from "../../hooks/useGetQuestionDetail";
+import {useGetAnswer} from "../../hooks/useGetAnswer";
 
 export default function QuestionDetail() {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const submitData = Object.fromEntries(formData);
+  };
 
+  const { GetQuestionDeatil, data } = useGetQuestionDeatil();
+  const { GetAnswer, answerList } = useGetAnswer();
+  useEffect(() => {
+    GetQuestionDeatil()
+    GetAnswer()
+  }, []);
+
+  console.log(answerList);
   return (
-    <div className={styles.container}>
-      <div className={styles.title}>
-        <h1>Question Detail</h1>
-      </div>
+    <Container component="div" maxWidth="xs">
+      <Typography variant="h3">{data?.title}</Typography>
       <hr></hr>
       <div className={styles.body}>
         <div className={styles.question}>
-          <div>content</div>
-          <div className={styles.createAt}>createAt</div>
+          <div>{data?.content}</div>
+          <div className={styles.createAt}>{data?.createdAt} | {data?.userName}</div>
         </div>
-        <div className={styles.title}>
-          <h3>0개의 답변이 있습니다.</h3>
-        </div>
+        <Typography variant="h5">0개의 답변이 있습니다.</Typography>
         <hr></hr>
-        <div className={styles.answer_create}>
-          <textarea className={styles.textarea} type="text" placeholder="Question"/>
-          <Button className={styles.button}>등록</Button>
-        </div>
+        <Box fullwidth className={styles.answer_create} component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
+          <TextField
+            className={styles.textarea}
+            required
+            fullWidth
+            id="answer"
+            label="answer"
+            name="answer"
+            autoComplete="answer"
+
+          />
+          <Button className={styles.button} type="submit">등록</Button>`
+        </Box>
         <div className={styles.answer_list}>
-          <div className={styles.answer}>
-            <div className={styles.answer_content}>content</div>
-            <div className={styles.answer_detail}>createAt | userName</div>
-          </div>
-          <div className={styles.answer}>
-            <div className={styles.answer_content}>content</div>
-            <div className={styles.answer_detail}>createAt | userName</div>
-          </div>
+          {answerList?.map((item, index) => {
+            return (
+              <div className={styles.answer} key={index}>
+                <div className={styles.answer_content}>{item.content}</div>
+                <div className={styles.answer_detail}>{item.createdAt} | {item.userName}</div>
+              </div>
+            )
+          })}
         </div>
       </div>
-    </div>);
+    </Container>);
 }
