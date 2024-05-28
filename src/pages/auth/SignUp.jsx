@@ -8,13 +8,24 @@ import {
   Typography,
   Container,
 } from "@mui/material";
+import auth from "../../api/accountAPI";
 
 export default function SignUp() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const submitData = Object.fromEntries(formData);
-    console.log(submitData);
+    console.log("signup submitdata", submitData);
+    auth
+      .signUp(submitData)
+      .then((res) => {
+        console.log("signup res", res);
+        alert(res.data);
+        window.location.href = "/login";
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (

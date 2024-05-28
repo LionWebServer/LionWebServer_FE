@@ -14,6 +14,7 @@
     "date-fns": "^3.6.0",
     "http-proxy-middleware": "^3.0.0",
     "json-server": "^1.0.0-beta.0",
+    "material-ui-popup-state": "^5.1.2",
     "moment": "^2.30.1",
     "msw": "^2.3.0",
     "react": "^18.3.1",

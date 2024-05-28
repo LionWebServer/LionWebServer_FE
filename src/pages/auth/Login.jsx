@@ -7,13 +7,36 @@ import {
   Typography,
   Container,
 } from "@mui/material";
+import auth from "../../api/accountAPI.js";
+import moment from "moment";
 
 export default function Login() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const submitData = Object.fromEntries(formData);
-    console.log(submitData);
+    console.log("signin submitdata", submitData);
+    auth
+      .login(submitData)
+      .then((res) => {
+        console.log("login res", res);
+
+        localStorage.setItem("access_token", res.data.accessToken);
+        localStorage.setItem(
+          "access_expiration",
+          moment().add(30, "minute").format("yyyy-MM-DD HH:mm:ss")
+        );
+        localStorage.setItem("userEmail", submitData.userEmail);
+
+        alert("로그인 성공!");
+        window.location.href = "/";
+      })
+      .catch((err) => {
+        console.log(err);
+        if (err.response.status == 401) {
+          alert("유효하지 않은 회원정보입니다.");
+        }
+      });
   };
 
   return (
