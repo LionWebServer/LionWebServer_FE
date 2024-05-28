@@ -16,9 +16,6 @@ const auth = {
     // FIXME
     // return axios.post(`/server/api/refresh`, data);
   },
-  question() {
-    return axios.get("/server/api/question-list");
-  },
 };
 
 export default auth;
