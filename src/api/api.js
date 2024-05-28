@@ -1,6 +1,6 @@
-import axios from "config";
+import axios from "./config";
 import moment from "moment";
-import { refresh, refreshErrorHandle } from "./refresh.ts";
+import { refresh, refreshErrorHandle } from "./refresh.js";
 import auth from "./accountAPI.js";
 
 const Api = axios.create({
@@ -31,6 +31,7 @@ Api.interceptors.response.use(
     /** refresh 요청이 끝나고 재요청을 보냈는데도 에러가 발생한 경우 재귀적으로 loop가 발생할 수 있기 때문에 이를 방지하기 위해 config.sent를 true로 설정 */
     config.sent = true;
 
+    /* TODO: refresh
     // refresh 요청
     const { data } = await auth.refresh(localStorage.getItem("refreshToken"));
 
@@ -44,6 +45,7 @@ Api.interceptors.response.use(
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
+    */
 
     return axios(config);
   }

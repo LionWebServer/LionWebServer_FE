@@ -19,6 +19,7 @@ const refresh = async (config) => {
     return config;
   }
 
+  /* TODO: refresh
   // 토큰 갱신 서버통신
   const { data } = await auth.refresh(localStorage.getItem("refreshToken"));
 
@@ -31,6 +32,7 @@ const refresh = async (config) => {
   if (config.headers) {
     config.headers.Authorization = `Bearer ${String(token)}`;
   }
+  */
   return config;
 };
 
