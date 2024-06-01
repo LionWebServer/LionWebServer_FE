@@ -1,10 +1,15 @@
 import {useState} from "react";
 import question from "../api/questionAPI";
+import {useLocation} from "react-router-dom";
 
 
-export const useGetQuestionDetail = (questionId) => {
+export const useGetQuestionDetail = () => {
 
   const [data, setData] = useState();
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const questionId = queryParams.get('questionId');
+
 
   const GetQuestionDetail = async () => {
 

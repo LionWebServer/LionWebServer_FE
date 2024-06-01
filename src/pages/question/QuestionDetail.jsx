@@ -7,13 +7,11 @@ import {usePostAnswer} from "../../hooks/usePostAnswer";
 import {useLocation} from "react-router-dom";
 
 export default function QuestionDetail() {
-  const location = useLocation();
-  const queryParams = new URLSearchParams(location.search);
-  const questionId = queryParams.get('questionId');
 
-  const { PostAnswer } = usePostAnswer(questionId);
-  const { GetQuestionDetail, data } = useGetQuestionDetail(questionId);
-  const { GetAnswer, answerList } = useGetAnswer(questionId);
+
+  const { PostAnswer } = usePostAnswer();
+  const { GetQuestionDetail, data } = useGetQuestionDetail();
+  const { GetAnswer, answerList } = useGetAnswer();
 
   useEffect(() => {
     GetQuestionDetail()

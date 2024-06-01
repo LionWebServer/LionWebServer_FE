@@ -4,6 +4,7 @@ import {useNavigate} from "react-router-dom";
 import {useGetQuestion} from "../../hooks/useGetQuestion";
 import {rows, columns} from "../../config/QuestionGrid";
 import styles from "./Question.module.scss";
+import {Button} from "@mui/material";
 
 export default function Question() {
   const navigate = useNavigate();
@@ -19,8 +20,15 @@ export default function Question() {
 
   return (
     <div className={styles.container}>
-      <DataGrid rows={data?.questionList || rows} columns={columns} pagination={true} onRowClick={handleRowClick} getRowId={(row) => row.id}/>
+      <div className="grid-container">
+        <DataGrid rows={data?.questionList || rows} columns={columns} pagination={true} onRowClick={handleRowClick}
+                  getRowId={(row) => row.id}/>
+      </div>
+      <Button onClick={() => navigate("/question/create")} variant="contained">질문 등록</Button>
+
+
     </div>
+
   );
 }
 
