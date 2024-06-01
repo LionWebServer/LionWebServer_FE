@@ -13,7 +13,7 @@ export default function Question() {
   }, []);
 
   const handleRowClick = (row) => {
-    navigate(`/question/detail/${row.id}`)
+    navigate(`/question/detail?questionId=${row.id}`)
   };
 
   return (
