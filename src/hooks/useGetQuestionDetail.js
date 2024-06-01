@@ -1,23 +1,23 @@
 import {useState} from "react";
+import question from "../api/questionAPI";
 
 
-export const useGetQuestionDeatil = () =>{
+export const useGetQuestionDetail = (questionId) =>{
 
   const [data, setData] = useState();
-  const GetQuestionDeatil = async () => {
-    fetch("http://localhost:3000/api/question_detail.json", {
-      method: "GET",
-    })
-      .then((res) => res.json())
-      .then((response) => {
-        const transData = {
-          ...response,
-          createdAt: new Date(response.createdAt).toLocaleString(),
-        }
-        if (response){
-          setData(transData);
-        }
-      })
+
+  const GetQuestionDetail = async () => {
+    question.getQuestionDetail(questionId).then((res) => {
+      const transData = {
+        ...res.data,
+        createdAt: new Date(res.data.createdAt).toLocaleString(),
+      }
+      if (response){
+        setData(transData);
+      }}
+    )
+
   }
-  return {GetQuestionDeatil, data}
+
+  return {GetQuestionDetail, data}
 }
