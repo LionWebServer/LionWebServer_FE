@@ -4,13 +4,16 @@ import {Box, Button, Container, TextField, Typography} from "@mui/material";
 import {useGetQuestionDeatil, useGetQuestionDetail} from "../../hooks/useGetQuestionDetail";
 import {useGetAnswer} from "../../hooks/useGetAnswer";
 import {usePostAnswer} from "../../hooks/usePostAnswer";
-import {useParams} from "react-router-dom";
+import {useLocation} from "react-router-dom";
 
 export default function QuestionDetail() {
-  const { questionId } = useParams();
-  const { PostAnswer } = usePostAnswer();
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const questionId = queryParams.get('questionId');
+
+  const { PostAnswer } = usePostAnswer(questionId);
   const { GetQuestionDetail, data } = useGetQuestionDetail(questionId);
-  const { GetAnswer, answerList } = useGetAnswer();
+  const { GetAnswer, answerList } = useGetAnswer(questionId);
 
   useEffect(() => {
     GetQuestionDetail()

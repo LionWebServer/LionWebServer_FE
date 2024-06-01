@@ -21,7 +21,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/logout" element={<Logout />} />
-          <Route path="/question/detail/:id" element={<QuestionDetail />} />
+          <Route path="/question/detail" element={<QuestionDetail />} />
           <Route path="/question/create" element={<QuestionForm />} />
         </Routes>
       </GlobalLayout>

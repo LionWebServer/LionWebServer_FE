@@ -9,10 +9,10 @@ const question = {
     return Api.post("http://110.11.183.148:8000/api/question", data);
   },
   getQuestionDetail(questionId) {
-    return axios.get(`http://110.11.183.148:8000/api/question?questionId=${questionId}`);
+    return Api.get(`http://110.11.183.148:8000/api/question/${questionId}`);
   },
   getAnswer(questionId) {
-    return axios.get(`http://110.11.183.148:8000/api/answer-list?questionId=${questionId}`);
+    return Api.get(`http://110.11.183.148:8000/api/answer-list/${questionId}`);
   },
   postAnswer(data) {
     return Api.post("http://110.11.183.148:8000/api/answer", data);
