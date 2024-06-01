@@ -17,7 +17,7 @@ export const useGetQuestion = () =>{
         };
       })
       const transformedData = {
-        ...response,
+        ...res,
         questionList: transformedQuestionList,
       }
       setData(transformedData);

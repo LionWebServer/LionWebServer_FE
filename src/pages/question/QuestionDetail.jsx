@@ -24,7 +24,6 @@ export default function QuestionDetail() {
     PostAnswer(submitData);
   };
 
-  console.log(answerList);
   return (
     <Container component="div" maxWidth="xs">
       <Typography variant="h3">{data?.title}</Typography>

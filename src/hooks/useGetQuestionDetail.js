@@ -12,7 +12,7 @@ export const useGetQuestionDetail = (questionId) =>{
         ...res.data,
         createdAt: new Date(res.data.createdAt).toLocaleString(),
       }
-      if (response){
+      if (res){
         setData(transData);
       }}
     )

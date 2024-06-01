@@ -8,6 +8,7 @@ import styles from "./Question.module.scss";
 export default function Question() {
   const navigate = useNavigate();
   const { GetQuestion, data } = useGetQuestion();
+
   useEffect(() => {
     GetQuestion()
   }, []);
