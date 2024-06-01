@@ -8,6 +8,7 @@ export const useGetQuestion = () =>{
   const [data, setData] = useState();
   const GetQuestion = async () => {
     question.getQuestion().then((res) => {
+      console.log(res)
       const transformedQuestionList = res.data.map((item, index) => {
         return {
           id: item.questionId,
