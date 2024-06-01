@@ -8,17 +8,6 @@ const Api = axios.create({
   params: {},
 });
 
-Api.interceptors.request.use((config) => {
-  const token = localStorage.getItem("access_token");
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
-  }
-  return config;
-}, (error) => {
-  return Promise.reject(error);
-});
-
-
 Api.interceptors.request.use(refresh, refreshErrorHandle); // 요청 보내기 전 토큰 유효성 검사
 Api.interceptors.response.use(
   // 응답이 401에러인경우 refresh 후 다시 요청 수행해보기

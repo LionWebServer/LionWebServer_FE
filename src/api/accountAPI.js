@@ -3,14 +3,13 @@ import Api from "./api";
 
 const auth = {
   signUp(data) {
-    return axios.post("http://110.11.183.148:8000/api/auth/sign-up", data);
+    return axios.post("/server/api/auth/sign-up", data);
   },
   login(data) {
-    return axios.post("http://110.11.183.148:8000/api/auth/sign-in", data);
+    return axios.post("/server/api/auth/sign-in", data);
   },
   logout() {
-    // FIXME
-    // return Api.post("/server/api/logout");
+    delete Api.defaults.headers.common.Authorization;
   },
   refresh(data) {
     // FIXME

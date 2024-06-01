@@ -13,26 +13,18 @@ const refresh = async (config) => {
 
   if (!expireAt) {
     console.log(`accessToken doesn't exist`);
+    goToLogin();
     return config;
   }
-  if (!isExpired("access_expiration")) {
+  if (isExpired("access_expiration")) {
+    console.log(`accessToken expired`);
+    goToLogin();
     return config;
   }
 
-  /* TODO: refresh
-  // 토큰 갱신 서버통신
-  const { data } = await auth.refresh(localStorage.getItem("refreshToken"));
-
-  token = data.access;
-  localStorage.setItem("accessToken", data.access);
-  localStorage.setItem(
-    "access_expiration",
-    moment().add(30, "minute").format("yyyy-MM-DD HH:mm:ss")
-  );
   if (config.headers) {
     config.headers.Authorization = `Bearer ${String(token)}`;
   }
-  */
   return config;
 };
 

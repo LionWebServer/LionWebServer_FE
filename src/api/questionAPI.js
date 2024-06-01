@@ -3,19 +3,19 @@ import Api from "./api";
 
 const question = {
   getQuestion() {
-    return Api.get("http://110.11.183.148:8000/api/question-list");
+    return Api.get("/server/api/question-list");
   },
   postQuestion(data) {
-    return Api.post("http://110.11.183.148:8000/api/question", data);
+    return Api.post("/server/api/question", data);
   },
   getQuestionDetail(questionId) {
-    return Api.get(`http://110.11.183.148:8000/api/question/${questionId}`);
+    return Api.get(`/server/api/question/${questionId}`);
   },
   getAnswer(questionId) {
-    return Api.get(`http://110.11.183.148:8000/api/answer-list/${questionId}`);
+    return Api.get(`/server/api/answer-list/${questionId}`);
   },
   postAnswer(data) {
-    return Api.post("http://110.11.183.148:8000/api/answer", data);
+    return Api.post("/server/api/answer", data);
   },
 };
 
