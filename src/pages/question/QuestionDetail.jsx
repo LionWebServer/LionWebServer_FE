@@ -1,18 +1,19 @@
 import React, {useEffect} from "react";
 import styles from "./QuestionDetail.module.scss";
 import {Box, Button, Container, TextField, Typography} from "@mui/material";
-import {useGetQuestionDeatil} from "../../hooks/useGetQuestionDetail";
+import {useGetQuestionDeatil, useGetQuestionDetail} from "../../hooks/useGetQuestionDetail";
 import {useGetAnswer} from "../../hooks/useGetAnswer";
 import {usePostAnswer} from "../../hooks/usePostAnswer";
+import {useParams} from "react-router-dom";
 
 export default function QuestionDetail() {
-
+  const { questionId } = useParams();
   const { PostAnswer } = usePostAnswer();
-  const { GetQuestionDeatil, data } = useGetQuestionDeatil();
+  const { GetQuestionDetail, data } = useGetQuestionDetail(questionId);
   const { GetAnswer, answerList } = useGetAnswer();
 
   useEffect(() => {
-    GetQuestionDeatil()
+    GetQuestionDetail()
     GetAnswer()
   }, []);
 
