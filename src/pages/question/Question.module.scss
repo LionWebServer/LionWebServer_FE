@@ -2,11 +2,20 @@
 .container{
 
   button{
-    //display: flex;
-    //justify-content: center;
-    margin-top: 20px;
+
     float: right;
   }
 
+  .gridContainer{
+    min-height: 300px !important;
 
+    & > div{
+      min-height: 300px;
+    }
+  }
+
+  .submitButton{
+    float: right;
+    margin-top: 20px;
+  }
 }
