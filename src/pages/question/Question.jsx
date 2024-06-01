@@ -21,7 +21,10 @@ export default function Question() {
   return (
     <div className={styles.container}>
       <div className="grid-container">
-        <DataGrid rows={data?.questionList || rows} columns={columns} pagination={true} onRowClick={handleRowClick}
+        <DataGrid rows={data?.questionList || rows}
+                  columns={columns}
+                  pagination={true}
+                  onRowClick={handleRowClick}
                   getRowId={(row) => row.id}/>
       </div>
       <Button onClick={() => navigate("/question/create")} variant="contained">질문 등록</Button>
