@@ -1,15 +1,16 @@
 import React from "react";
 import styles from "./QuestionCreate.module.scss";
 import {Box, Button, Container, TextField} from "@mui/material";
+import {usePostQuestion} from "../../hooks/usePostQuestion";
 
 export default function Question() {
+  const {PostQuestion} = usePostQuestion();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const submitData = Object.fromEntries(formData);
-    console.log(submitData)
-    // PostAnswer(submitData);
+    PostQuestion(submitData);
   };
 
 
